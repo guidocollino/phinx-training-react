@@ -16,6 +16,17 @@ class TodoTask extends React.Component<PropsTodoTask,StateTodoTask> {
     taskName: ''
   };
 
+  handleEditTask = (task: Task, taskName: string): void => {
+    const newTask = { ...task, name: taskName }
+    const newTasks = this.state.tasks.map(t => t === task ? newTask : t)
+    this.setState({ tasks: newTasks});
+  }
+
+  handleDeleteTask = (task: Task): void => {
+    const newTasks = this.state.tasks.filter(t => t !== task);
+    this.setState({ tasks: newTasks});
+  }
+
   handleChange = (e: React.FormEvent<HTMLInputElement>): void => {
     this.setState({ taskName: e.currentTarget.value });
   };
@@ -23,7 +34,12 @@ class TodoTask extends React.Component<PropsTodoTask,StateTodoTask> {
   handleSubmit = (event: React.SyntheticEvent): void => {
     const taskName = this.state.taskName;
     if (taskName) {
-      const newTask: Task = {name: this.state.taskName, status: "PENDING"};
+      const newTask: Task = {
+        name: taskName, 
+        editHandler: this.handleEditTask,
+        deleteHandler: this.handleDeleteTask
+      };
+
       const newTasks = [...this.state.tasks, newTask];
       this.setState({ tasks: newTasks, taskName: '' });
     }

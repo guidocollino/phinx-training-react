@@ -8,7 +8,7 @@ type ListProps = {
 
 function List({ tasks }: ListProps) {
 
-  const listItems = tasks.map((task: Task) =>  <TaskRow name={task.name} />);
+  const listItems = tasks.map((task: Task) =>  <TaskRow task={task} />);
   return (
     <ul>
       {listItems}
