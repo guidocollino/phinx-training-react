@@ -3,14 +3,13 @@ import Button from 'components/Button';
 import Editable from 'components/Editable';
 import { Task } from '../../types';
 
-
-type TaskRowProps = {
+type Props = {
   task: Task
 }
 
-function TaskRow({ task }: TaskRowProps) {
+function TaskRow({ task }: Props) {
   return (
-    <li>
+    <>
       <Editable text={task.name} type={'text'} placeHolder='TaskName'>
         <input
           type="text"
@@ -21,7 +20,7 @@ function TaskRow({ task }: TaskRowProps) {
         />
       </Editable>
       <Button label={'X'} onClick={() => task.deleteHandler(task)} />
-    </li>
+    </>
   )
 }
 

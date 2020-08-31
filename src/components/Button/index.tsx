@@ -1,11 +1,11 @@
 import React from 'react';
 
-type ButtonProps = {
+type Props = {
   label: string,
   onClick: (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void
 }
 
-function Button({ label, onClick}: ButtonProps) {
+function Button({ label, onClick}: Props) {
 
   return (
   <button onClick={onClick}>{ label }</button>

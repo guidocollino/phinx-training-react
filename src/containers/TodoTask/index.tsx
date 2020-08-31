@@ -3,64 +3,57 @@ import List from '../../components/List';
 // import Button from 'components/Button';
 import { Task } from '../../types';
 
-type StateTodoTask = {
+type State = {
   tasks: Array<Task>,
   taskName: string
 }
+function TodoTask() {
+  const [tasks, setTasks] = useState<Array<Task>>([]);
+  const [taskName, setTaskName] = useState<string>('');
 
-type PropsTodoTask = {};
-
-class TodoTask extends React.Component<PropsTodoTask,StateTodoTask> {
-  state: StateTodoTask = {
-    tasks: [],
-    taskName: ''
-  };
-
-  handleEditTask = (task: Task, taskName: string): void => {
-    const newTask = { ...task, name: taskName }
-    const newTasks = this.state.tasks.map(t => t === task ? newTask : t)
-    this.setState({ tasks: newTasks});
+  function handleEditTask(task: Task, taskName: string): void {
+    console.log('TASKS ORIGINAL', tasks);
+    const newTask = { ...task, name: taskName };
+    const newTasks = tasks.map(t => t.name === task.name ? newTask : t)
+    setTasks(newTasks);
   }
 
-  handleDeleteTask = (task: Task): void => {
-    const newTasks = this.state.tasks.filter(t => t !== task);
-    this.setState({ tasks: newTasks});
+  function handleDeleteTask(task: Task): void {
+    const newTasks = tasks.filter(t => t !== task);
+    setTasks(newTasks);
   }
 
-  handleChange = (e: React.FormEvent<HTMLInputElement>): void => {
-    this.setState({ taskName: e.currentTarget.value });
-  };
+  function handleChange(e: React.FormEvent<HTMLInputElement>): void {
+    setTaskName(e.currentTarget.value);
+  }
 
-  handleSubmit = (event: React.SyntheticEvent): void => {
-    const taskName = this.state.taskName;
+  function handleSubmit(event: React.SyntheticEvent): void {
     if (taskName) {
       const newTask: Task = {
         name: taskName, 
-        editHandler: this.handleEditTask,
-        deleteHandler: this.handleDeleteTask
+        editHandler: handleEditTask,
+        deleteHandler: handleDeleteTask
       };
-
-      const newTasks = [...this.state.tasks, newTask];
-      this.setState({ tasks: newTasks, taskName: '' });
+      const newTasks = [...tasks, newTask];
+      setTasks(newTasks);
+      setTaskName('');
     }
     event.preventDefault();
   }
 
-  render() {
-    return (
-      <>
-        <h1>Taks</h1>
-        <List tasks={this.state.tasks}/>
-        <form onSubmit={this.handleSubmit}>
-          <label>
-            Name:
-            <input type="text" value={this.state.taskName} onChange={this.handleChange} />
-          </label>
-          <input type="submit" value="Submit" />
-        </form>
-      </>
-    )
-  }
+  return (
+    <>
+      <h1>Taks</h1>
+      <List tasks={tasks}/>
+      <form onSubmit={handleSubmit}>
+        <label>
+          Name:
+          <input type="text" value={taskName} onChange={handleChange} />
+        </label>
+        <input type="submit" value="Submit" />
+      </form>
+        </>
+      )
 }
 
 export default TodoTask;
