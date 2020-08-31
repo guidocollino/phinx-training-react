@@ -36,8 +36,8 @@ class TodoTask extends React.Component<PropsTodoTask,StateTodoTask> {
     if (taskName) {
       const newTask: Task = {
         name: taskName, 
-        editHandler: this.handleEditTask,
-        deleteHandler: this.handleDeleteTask
+        editHandler: this.handleEditTask.bind(this),
+        deleteHandler: this.handleDeleteTask.bind(this)
       };
 
       const newTasks = [...this.state.tasks, newTask];
