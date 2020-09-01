@@ -9,35 +9,46 @@ import Checkbox from '../../components/Checkbox';
 
 const Login: FC = () => {
   return (
-    <CardContainerStyled>
-      <Card>
-        <Headline className="text-center" title="Login" />
-        <InputContainerStyled>
-          <Input label="Email" type="email" placeHolder="Enter email" />
-        </InputContainerStyled>
-        <InputContainerStyled>
-          <Input
-            label="Password"
-            type="password"
-            placeHolder="Enter password"
-          />
-        </InputContainerStyled>
-        <InputContainerStyled>
-          <Checkbox label="Remember me" />
-        </InputContainerStyled>
+    <ContainerStyled>
+      <CardContainerStyled>
+        <Card>
+          <Headline className="text-center" title="Login" />
+          <InputContainerStyled>
+            <Input label="Email" type="email" placeHolder="Enter email" />
+          </InputContainerStyled>
+          <InputContainerStyled>
+            <Input
+              label="Password"
+              type="password"
+              placeHolder="Enter password"
+            />
+          </InputContainerStyled>
+          <InputContainerStyled>
+            <Checkbox label="Remember me" />
+          </InputContainerStyled>
 
-        <ButtonContainerStyled>
-          <Button title="Save" onClick={() => null} />
-        </ButtonContainerStyled>
-        <HelpPasswordContainerStyled>
-          <span>Forgot</span> <Hyperlink title="password?" href="#" />
-        </HelpPasswordContainerStyled>
-      </Card>
-    </CardContainerStyled>
+          <ButtonContainerStyled>
+            <Button title="Save" onClick={() => null} />
+          </ButtonContainerStyled>
+          <HelpPasswordContainerStyled>
+            <span>Forgot</span> <Hyperlink title="password?" href="#" />
+          </HelpPasswordContainerStyled>
+        </Card>
+      </CardContainerStyled>
+    </ContainerStyled>
   );
 };
 
 export default Login;
+
+const ContainerStyled = styled.div`
+  background: #33b5ff;
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+`;
 
 const CardContainerStyled = styled.div`
   width: 30em;

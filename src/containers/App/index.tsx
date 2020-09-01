@@ -1,21 +1,23 @@
 import React, { FC } from 'react';
-import styled from 'styled-components';
+import styled, { createGlobalStyle } from 'styled-components';
 import Login from '../../containers/Login';
+
+const GlobalStyle = createGlobalStyle`
+  html, body {
+    width: 100%;
+    height: 100%;
+    margin: 0px;
+    padding: 0px;
+  }
+`;
 
 const App: FC = () => {
   return (
-    <LoginContainerStyled>
+    <div>
+      <GlobalStyle />
       <Login />
-    </LoginContainerStyled>
+    </div>
   );
 };
 
 export default App;
-
-const LoginContainerStyled = styled.div`
-  width: 100%;
-  background: #33b5ff;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-`;
