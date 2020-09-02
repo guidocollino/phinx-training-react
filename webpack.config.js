@@ -12,6 +12,7 @@ module.exports = {
   },
   devtool: 'source-map',
   resolve: {
+    plugins: [new TsconfigPathsPlugin()],
     extensions: ['.ts', '.tsx', '.js', '.json'],
   },
   module: {

@@ -1,6 +1,6 @@
 import React, { FC } from 'react';
-import styled, { createGlobalStyle } from 'styled-components';
-import Login from '../../containers/Login';
+import { createGlobalStyle } from 'styled-components';
+import Login from '@containers/Login';
 
 const GlobalStyle = createGlobalStyle`
   html, body {

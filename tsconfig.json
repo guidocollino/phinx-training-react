@@ -20,7 +20,12 @@
     "noEmit": true,
     "jsx": "react",
     "outDir": "./dist",
-    "baseUrl": "./src"
+    "baseUrl": "./src",
+    "noImplicitAny": true,
+    "paths": {
+      "@components": ["./components"],
+      "@containers/*": ["./containers/*"]
+    }
   },
   "include": [
     "./src/**/*"

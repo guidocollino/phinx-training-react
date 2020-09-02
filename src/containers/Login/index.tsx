@@ -1,11 +1,6 @@
 import React, { FC } from 'react';
 import styled from 'styled-components';
-import Card from '../../components/Card';
-import Headline from '../../components/Headline';
-import Input from '../../components/Input';
-import Hyperlink from '../../components/Hyperlink';
-import Button from '../../components/Button';
-import Checkbox from '../../components/Checkbox';
+import { Card, Headline, Input, Hyperlink, Button, Checkbox } from '@components';
 
 const Login: FC = () => {
   return (
@@ -17,11 +12,7 @@ const Login: FC = () => {
             <Input label="Email" type="email" placeHolder="Enter email" />
           </InputContainerStyled>
           <InputContainerStyled>
-            <Input
-              label="Password"
-              type="password"
-              placeHolder="Enter password"
-            />
+            <Input label="Password" type="password" placeHolder="Enter password" />
           </InputContainerStyled>
           <InputContainerStyled>
             <Checkbox label="Remember me" />
